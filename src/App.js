@@ -8,6 +8,7 @@ function App() {
   return (
       <Admin dataProvider={dataProvider}>
         <Resource name='users' list={UserList}/>
+        <Resource name='clients/all' list={ListGuesser}/>
       </Admin>
   );
 }
