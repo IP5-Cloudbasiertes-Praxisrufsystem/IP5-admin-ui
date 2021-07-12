@@ -16,7 +16,7 @@ const httpClient = (url) => {
 
 
 export default {
-    getList: (resource, headers, params) => {
+    getList: (resource, params) => {
         const url = `${apiUrl}/${resource}`;
         return httpClient(url).then(({ headers, json }) => ({
             data: json,
