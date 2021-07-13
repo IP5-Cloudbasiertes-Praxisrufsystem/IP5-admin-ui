@@ -1,7 +1,8 @@
 import {fetchUtils} from 'react-admin';
 import {stringify} from  'querystring';
 import inMemoryJWT from './inMemoryJwt';
-const apiUrl = 'http://localhost:5000/api';
+import {API_URL} from "./environment";
+
 const httpClient = (url, options) => {
     if(!options){options = {}}
     if(!options.headers){
@@ -19,7 +20,7 @@ const httpClient = (url, options) => {
 
 export default {
     getList: (resource, params) => {
-        const url = `${apiUrl}/${resource}`;
+        const url = `${API_URL}/${resource}`;
         return httpClient(url).then(({ headers, json }) => ({
             data: json,
             total: json.length
@@ -30,18 +31,18 @@ export default {
         const query = {
             filter: JSON.stringify({ id: params.ids }),
         };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
+        const url = `${API_URL}/${resource}?${stringify(query)}`;
         return httpClient(url).then(({ json }) => ({ data: json }));
     },
 
     getOne: (resource, params) => {
-        const url = `${apiUrl}/${resource}/${params.id}`;
+        const url = `${API_URL}/${resource}/${params.id}`;
         return httpClient(url).then(({ json }) => ({ data: json }));
     },
 
     update: (resource, params) => {
         console.log(JSON.stringify(params));
-        return httpClient(`${apiUrl}/${resource}`, {
+        return httpClient(`${API_URL}/${resource}`, {
             method: 'PUT',
             body: JSON.stringify(params.data),
         }).then(({json}) => ({data: json}))
