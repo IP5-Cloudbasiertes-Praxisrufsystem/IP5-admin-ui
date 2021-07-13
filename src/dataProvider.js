@@ -2,10 +2,12 @@ import {fetchUtils} from 'react-admin';
 import {stringify} from  'querystring';
 import inMemoryJWT from './inMemoryJwt';
 const apiUrl = 'http://localhost:5000/api';
-const httpClient = (url) => {
-    const options = {
-        headers: new Headers({ Accept: 'application/json' }),
-    };
+const httpClient = (url, options) => {
+    if(!options){options = {}}
+    if(!options.headers){
+        options.headers = new Headers({ Accept: 'application/json' });
+    }
+
     const token = inMemoryJWT.getToken();
     if (token) {
         options.headers.set('Authorization', `Bearer ${token}`);
@@ -31,5 +33,19 @@ export default {
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
         return httpClient(url).then(({ json }) => ({ data: json }));
     },
+
+    getOne: (resource, params) => {
+        const url = `${apiUrl}/${resource}/${params.id}`;
+        return httpClient(url).then(({ json }) => ({ data: json }));
+    },
+
+    update: (resource, params) => {
+        console.log(JSON.stringify(params));
+        return httpClient(`${apiUrl}/${resource}`, {
+            method: 'PUT',
+            body: JSON.stringify(params.data),
+        }).then(({json}) => ({data: json}))
+    },
+
 
 }
