@@ -1,11 +1,12 @@
 import inMemoryJWT from './inMemoryJwt';
+import {LOGIN_URL} from "./environment";
 
 const authProvider = {
     login: ({ username, password }) => {
         let headers = new Headers();
         headers.append('Authorization', 'Basic ' + Buffer.from(username + ':' + password).toString('base64'));
         headers.append('Content-Type', 'application/json');
-        const request = new Request('http://localhost:5000/api/users/login', {
+        const request = new Request(LOGIN_URL, {
             method: 'GET',
             headers: headers
         });
