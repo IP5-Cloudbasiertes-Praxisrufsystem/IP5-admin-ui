@@ -41,12 +41,29 @@ export default {
     },
 
     update: (resource, params) => {
-        console.log(JSON.stringify(params));
         return httpClient(`${API_URL}/${resource}`, {
             method: 'PUT',
             body: JSON.stringify(params.data),
         }).then(({json}) => ({data: json}))
     },
 
+    create: (resource, params) => {
+        return httpClient(`${API_URL}/${resource}`, {
+            method: 'POST',
+            body: JSON.stringify(params.data),
+        }).then(({json}) => ({data: json}))
+    },
+
+    delete: (resource, params) => {
+        return httpClient(`${API_URL}/${resource}/${params.id}`,{
+            method: 'DELETE'
+        }).then(({json}) => ({data: params.data}))
+    },
+
+    deleteMany: (resource, params) => {
+        return httpClient(`${API_URL}/${resource}/many/${params.ids}`,{
+            method: 'DELETE',
+        }).then(({json}) => ({data: []}))
+    },
 
 }
