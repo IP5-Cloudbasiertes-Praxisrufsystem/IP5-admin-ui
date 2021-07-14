@@ -19,7 +19,6 @@ export const ClientsList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="name"/>
-            <TextField source="id"/>
             <ReferenceField source="userId" reference="users"><TextField source="userName"/></ReferenceField>
         </Datagrid>
     </List>
@@ -28,7 +27,6 @@ export const ClientsList = props => (
 export const ClientEdit = props => (
     <Edit {...props}>
         <SimpleForm>
-            <TextInput source="id" />
             <TextInput source="name" />
             <ReferenceInput source="userId" reference="users"><SelectInput optionText="userName" /></ReferenceInput>
         </SimpleForm>

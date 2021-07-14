@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {List, Datagrid, TextField, Edit, SimpleForm, TextInput, PasswordInput, Create, AutocompleteInput} from 'react-admin';
+import {SelectField, List, Datagrid, TextField, Edit, SimpleForm, TextInput, PasswordInput, Create, AutocompleteInput} from 'react-admin';
 import {ROLES} from "../constants";
 
 export const UserList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="userName"/>
-            <TextField source="id"/>
+            <SelectField source="role" choices={ROLES}/>
         </Datagrid>
     </List>
 );
@@ -14,7 +14,6 @@ export const UserList = props => (
 export const UserEdit = props => (
     <Edit {...props}>
         <SimpleForm>
-            <TextInput source="id"/>
             <TextInput source="userName"/>
             <PasswordInput source="password"/>
             <AutocompleteInput source="role" choices={ROLES}/>
