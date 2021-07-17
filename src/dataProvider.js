@@ -57,7 +57,7 @@ export default {
     delete: (resource, params) => {
         return httpClient(`${API_URL}/${resource}/${params.id}`,{
             method: 'DELETE'
-        })
+        }).then(({json}) => ({data: params.previousData}))
     },
 
     deleteMany: (resource, params) => {
