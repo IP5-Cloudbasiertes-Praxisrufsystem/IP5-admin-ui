@@ -15,7 +15,8 @@ import {
     SingleFieldList,
     TextField,
     TextInput,
-    AutocompleteInput
+    AutocompleteInput,
+    FormDataConsumer
 } from "react-admin";
 import {RULE_TYPES} from "../constants";
 
@@ -47,7 +48,33 @@ export const ConfigurationEdit = props => (
             <TextInput source="name"/>
             <ArrayInput source="ruleParameters"><SimpleFormIterator>
                 <AutocompleteInput label="Rule Type" source="ruleType" choices={RULE_TYPES}/>
-                <TextInput label="Value" source="value"/></SimpleFormIterator></ArrayInput>
+                <FormDataConsumer>
+                    {({
+                          formData,
+                          scopedFormData,
+                          getSource,
+                          ...rest
+                      }) =>
+                        scopedFormData && scopedFormData.ruleType === "SENDER" &&
+                        (
+                            <ReferenceInput label="Value" source={getSource('value')} reference="clients" {...rest}><SelectInput optionText="name"/></ReferenceInput>
+                        )
+                    }
+                </FormDataConsumer>
+                <FormDataConsumer>
+                    {({
+                          formData,
+                          scopedFormData,
+                          getSource,
+                          ...rest
+                      }) =>
+                        scopedFormData && scopedFormData.ruleType === "NOTIFICATION_TYPE" &&
+                        (
+                            <TextInput label="Value" source={getSource('value')}/>
+                        )
+                    }
+                </FormDataConsumer>
+            </SimpleFormIterator></ArrayInput>
             <ArrayInput source="notificationTypes"><SimpleFormIterator>
                 <TextInput label={"Display Text"} source="displayText"/>
                 <TextInput label={"Title"} source="title"/>
@@ -63,8 +90,34 @@ export const ConfigurationCreate = props => (
             <ReferenceInput source="clientId" reference="clients"><SelectInput optionText="name"/></ReferenceInput>
             <TextInput source="name"/>
             <ArrayInput source="ruleParameters"><SimpleFormIterator>
-                <AutocompleteInput label="Rule Type" source="ruleType" choices={RULE_TYPES}/>
-                <TextInput label="Value" source="value"/></SimpleFormIterator></ArrayInput>
+                <AutocompleteInput id="rule" label="Rule Type" source="ruleType" choices={RULE_TYPES}/>
+                <FormDataConsumer>
+                    {({
+                          formData,
+                          scopedFormData,
+                          getSource,
+                          ...rest
+                      }) =>
+                        scopedFormData && scopedFormData.ruleType === "SENDER" &&
+                        (
+                            <ReferenceInput label="Value" source={getSource('value')} reference="clients" {...rest}><SelectInput optionText="name"/></ReferenceInput>
+                        )
+                    }
+                </FormDataConsumer>
+                <FormDataConsumer>
+                    {({
+                          formData,
+                          scopedFormData,
+                          getSource,
+                          ...rest
+                      }) =>
+                        scopedFormData && scopedFormData.ruleType === "NOTIFICATION_TYPE" &&
+                        (
+                            <TextInput label="Value" source={getSource('value')}/>
+                        )
+                    }
+                </FormDataConsumer>
+                </SimpleFormIterator></ArrayInput>
             <ArrayInput source="notificationTypes"><SimpleFormIterator>
                 <TextInput label={"Display Text"} source="displayText"/>
                 <TextInput label={"Title"} source="title"/>
