@@ -70,16 +70,19 @@ export const ConfigurationEdit = props => (
                       }) =>
                         scopedFormData && scopedFormData.ruleType === "NOTIFICATION_TYPE" &&
                         (
-                            <TextInput label="Value" source={getSource('value')}/>
+                            <ReferenceInput label="Value" source={getSource('value')} reference="notificationtypes" {...rest}><SelectInput optionText="title"/></ReferenceInput>
                         )
                     }
                 </FormDataConsumer>
             </SimpleFormIterator></ArrayInput>
-            <ArrayInput source="notificationTypes"><SimpleFormIterator>
-                <TextInput label={"Display Text"} source="displayText"/>
-                <TextInput label={"Title"} source="title"/>
-                <TextInput label={"Body"} source="body"/>
-                <TextInput label={"Type"} source="type"/></SimpleFormIterator></ArrayInput>
+
+
+
+            <ArrayInput source="notificationTypes">
+                <SimpleFormIterator>
+                    <ReferenceInput reference="notificationtypes"><SelectInput optionText="title"/></ReferenceInput>
+                </SimpleFormIterator>
+            </ArrayInput>
         </SimpleForm>
     </Edit>
 );
