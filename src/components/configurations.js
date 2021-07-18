@@ -31,12 +31,7 @@ export const ConfigurationList = props => (
                     <TextField source="value"/>
                 </Datagrid>
             </ArrayField>
-            <ArrayField source="notificationTypes">
-                <Datagrid>
-                    <TextField source="type"/>
-                    <TextField source="title"/>
-                </Datagrid>
-            </ArrayField>
+            <ReferenceField source="notificationTypes" reference="notificationtypes"><TextField source="title"/></ReferenceField>
         </Datagrid>
     </List>
 );
