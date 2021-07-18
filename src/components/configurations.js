@@ -9,6 +9,7 @@ import {
     List,
     ReferenceField,
     ReferenceInput,
+    ReferenceArrayField,
     SelectInput,
     SimpleForm,
     SimpleFormIterator,
@@ -32,7 +33,14 @@ export const ConfigurationList = props => (
                     <TextField source="value"/>
                 </Datagrid>
             </ArrayField>
-            <ReferenceField source="notificationTypes" reference="notificationtypes"><TextField source="title"/></ReferenceField>
+
+            <ReferenceArrayField source="notificationTypes" reference="notificationtypes">
+                <SingleFieldList>
+                    <ChipField source="title"/>
+                </SingleFieldList>
+            </ReferenceArrayField>
+
+
         </Datagrid>
     </List>
 );
