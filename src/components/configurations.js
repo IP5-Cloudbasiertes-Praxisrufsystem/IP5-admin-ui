@@ -25,6 +25,7 @@ export const ConfigurationList = props => (
         <Datagrid rowClick="edit">
             <ReferenceField source="clientId" reference="clients"><TextField source="name"/></ReferenceField>
             <TextField source="name"/>
+
             <ArrayField source="ruleParameters">
                 <Datagrid>
                     <TextField source="ruleType"/>

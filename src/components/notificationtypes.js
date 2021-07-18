@@ -25,12 +25,12 @@ export const NotificationTypeEdit = props => (
 );
 
 export const NotificationTypeCreate = props => (
-    <Edit {...props}>
+    <Create {...props}>
         <SimpleForm>
             <TextInput source="displayText"/>
             <TextInput source="title"/>
             <TextInput source="body"/>
             <TextInput source="description"/>
         </SimpleForm>
-    </Edit>
+    </Create>
 );
