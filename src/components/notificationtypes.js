@@ -18,7 +18,7 @@ export const NotificationTypeEdit = props => (
         <SimpleForm>
             <TextInput source="displayText"/>
             <TextInput source="title"/>
-            <TextInput source="body"/>
+            <TextInput multiline={true} source="body"/>
             <TextInput source="description"/>
         </SimpleForm>
     </Edit>
@@ -29,7 +29,7 @@ export const NotificationTypeCreate = props => (
         <SimpleForm>
             <TextInput source="displayText"/>
             <TextInput source="title"/>
-            <TextInput source="body"/>
+            <TextInput multiline={true} source="body"/>
             <TextInput source="description"/>
         </SimpleForm>
     </Create>
