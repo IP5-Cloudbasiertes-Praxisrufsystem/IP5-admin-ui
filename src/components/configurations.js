@@ -9,6 +9,7 @@ import {
     List,
     ReferenceField,
     ReferenceInput,
+    ReferenceArrayField,
     SelectInput,
     SimpleForm,
     SimpleFormIterator,
@@ -25,18 +26,19 @@ export const ConfigurationList = props => (
         <Datagrid rowClick="edit">
             <ReferenceField source="clientId" reference="clients"><TextField source="name"/></ReferenceField>
             <TextField source="name"/>
+
             <ArrayField source="ruleParameters">
                 <Datagrid>
                     <TextField source="ruleType"/>
                     <TextField source="value"/>
                 </Datagrid>
             </ArrayField>
-            <ArrayField source="notificationTypes">
-                <Datagrid>
-                    <TextField source="type"/>
-                    <TextField source="title"/>
-                </Datagrid>
-            </ArrayField>
+
+            <ReferenceArrayField source="notificationTypes" reference="notificationtypes">
+                <SingleFieldList>
+                    <ChipField source="title"/>
+                </SingleFieldList>
+            </ReferenceArrayField>
         </Datagrid>
     </List>
 );
@@ -57,7 +59,9 @@ export const ConfigurationEdit = props => (
                       }) =>
                         scopedFormData && scopedFormData.ruleType === "SENDER" &&
                         (
-                            <ReferenceInput label="Value" source={getSource('value')} reference="clients" {...rest}><SelectInput optionText="name"/></ReferenceInput>
+                            <ReferenceInput label="Value" source={getSource('value')}
+                                            reference="clients" {...rest}><SelectInput
+                                optionText="name"/></ReferenceInput>
                         )
                     }
                 </FormDataConsumer>
@@ -70,16 +74,19 @@ export const ConfigurationEdit = props => (
                       }) =>
                         scopedFormData && scopedFormData.ruleType === "NOTIFICATION_TYPE" &&
                         (
-                            <TextInput label="Value" source={getSource('value')}/>
+                            <ReferenceInput label="Value" source={getSource('value')}
+                                            reference="notificationtypes" {...rest}><SelectInput
+                                optionText="title"/></ReferenceInput>
                         )
                     }
                 </FormDataConsumer>
-            </SimpleFormIterator></ArrayInput>
-            <ArrayInput source="notificationTypes"><SimpleFormIterator>
-                <TextInput label={"Display Text"} source="displayText"/>
-                <TextInput label={"Title"} source="title"/>
-                <TextInput label={"Body"} source="body"/>
-                <TextInput label={"Type"} source="type"/></SimpleFormIterator></ArrayInput>
+            </SimpleFormIterator>
+            </ArrayInput>
+            <ArrayInput source="notificationTypes">
+                <SimpleFormIterator>
+                    <ReferenceInput reference="notificationtypes"><SelectInput optionText="title"/></ReferenceInput>
+                </SimpleFormIterator>
+            </ArrayInput>
         </SimpleForm>
     </Edit>
 );
@@ -90,7 +97,7 @@ export const ConfigurationCreate = props => (
             <ReferenceInput source="clientId" reference="clients"><SelectInput optionText="name"/></ReferenceInput>
             <TextInput source="name"/>
             <ArrayInput source="ruleParameters"><SimpleFormIterator>
-                <AutocompleteInput id="rule" label="Rule Type" source="ruleType" choices={RULE_TYPES}/>
+                <AutocompleteInput label="Rule Type" source="ruleType" choices={RULE_TYPES}/>
                 <FormDataConsumer>
                     {({
                           formData,
@@ -100,7 +107,9 @@ export const ConfigurationCreate = props => (
                       }) =>
                         scopedFormData && scopedFormData.ruleType === "SENDER" &&
                         (
-                            <ReferenceInput label="Value" source={getSource('value')} reference="clients" {...rest}><SelectInput optionText="name"/></ReferenceInput>
+                            <ReferenceInput label="Value" source={getSource('value')}
+                                            reference="clients" {...rest}><SelectInput
+                                optionText="name"/></ReferenceInput>
                         )
                     }
                 </FormDataConsumer>
@@ -113,16 +122,19 @@ export const ConfigurationCreate = props => (
                       }) =>
                         scopedFormData && scopedFormData.ruleType === "NOTIFICATION_TYPE" &&
                         (
-                            <TextInput label="Value" source={getSource('value')}/>
+                            <ReferenceInput label="Value" source={getSource('value')}
+                                            reference="notificationtypes" {...rest}><SelectInput
+                                optionText="title"/></ReferenceInput>
                         )
                     }
                 </FormDataConsumer>
-                </SimpleFormIterator></ArrayInput>
-            <ArrayInput source="notificationTypes"><SimpleFormIterator>
-                <TextInput label={"Display Text"} source="displayText"/>
-                <TextInput label={"Title"} source="title"/>
-                <TextInput label={"Body"} source="body"/>
-                <TextInput label={"Type"} source="type"/></SimpleFormIterator></ArrayInput>
+            </SimpleFormIterator>
+            </ArrayInput>
+            <ArrayInput source="notificationTypes">
+                <SimpleFormIterator>
+                    <ReferenceInput reference="notificationtypes"><SelectInput optionText="title"/></ReferenceInput>
+                </SimpleFormIterator>
+            </ArrayInput>
         </SimpleForm>
     </Create>
 );
