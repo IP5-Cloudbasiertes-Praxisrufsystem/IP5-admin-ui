@@ -28,24 +28,10 @@ export const ConfigurationList = props => (
             <ReferenceField source="clientId" reference="clients"><TextField source="name"/></ReferenceField>
             <TextField source="name"/>
 
-
-            <ArrayField source="ruleParameters">
-                <SingleFieldList>
-                    <ReferenceField source="value" reference="clients"><TextField source="name"/></ReferenceField>
-                </SingleFieldList>
-            </ArrayField>
-
-            <ArrayField source="ruleParameters">
-                <SingleFieldList>
-                    <ReferenceField source="value" reference="notificationtypes"><TextField source="displayText"/></ReferenceField>
-                </SingleFieldList>
-            </ArrayField>
-
-
             <ArrayField source="ruleParameters">
                 <Datagrid>
-                    <TextField source="ruleType"></TextField>
-                    <FunctionField render={({ruleType, _}) =>
+                    <TextField label="Rule Type" source="ruleType"></TextField>
+                    <FunctionField label="Value" render={({ruleType, _}) =>
                         ruleType === "SENDER"
                         && <ReferenceField source="value" reference="clients"><TextField source="name"/></ReferenceField>
                         || <ReferenceField source="value" reference="notificationtypes"><TextField source="displayText"/></ReferenceField>
@@ -54,13 +40,6 @@ export const ConfigurationList = props => (
                 </Datagrid>
             </ArrayField>
 
-
-            {/*<ArrayField source="ruleParameters">*/}
-            {/*        <Datagrid>*/}
-            {/*            <TextField source="ruleType"/>*/}
-            {/*            <TextField source="value"/>*/}
-            {/*        </Datagrid>*/}
-            {/*</ArrayField>*/}
 
             <ReferenceArrayField source="notificationTypes" reference="notificationtypes">
                 <SingleFieldList>
