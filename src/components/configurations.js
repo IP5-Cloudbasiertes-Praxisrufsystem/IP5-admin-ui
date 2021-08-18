@@ -28,7 +28,7 @@ export const ConfigurationList = props => (
             <ReferenceField source="clientId" reference="clients"><TextField source="name"/></ReferenceField>
             <TextField source="name"/>
 
-            <ArrayField source="ruleParameters">
+            <ArrayField label="Rule Parameters" source="ruleParameters">
                 <Datagrid>
                     <TextField label="Rule Type" source="ruleType"></TextField>
                     <FunctionField label="Value" render={({ruleType, _}) =>
@@ -41,7 +41,7 @@ export const ConfigurationList = props => (
             </ArrayField>
 
 
-            <ReferenceArrayField source="notificationTypes" reference="notificationtypes">
+            <ReferenceArrayField label="Notification Types" source="notificationTypes" reference="notificationtypes">
                 <SingleFieldList>
                     <ChipField source="title"/>
                 </SingleFieldList>

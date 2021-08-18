@@ -16,7 +16,7 @@ export const NotificationTypeList = props => (
 export const NotificationTypeEdit = props => (
     <Edit {...props}>
         <SimpleForm>
-            <TextInput source="displayText"/>
+            <TextInput label="Display Text" source="displayText"/>
             <TextInput source="title"/>
             <TextInput multiline={true} source="body"/>
             <TextInput source="description"/>

@@ -5,7 +5,7 @@ import {ROLES} from "../constants";
 export const UserList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="userName"/>
+            <TextField label="User Name" source="userName"/>
             <SelectField source="role" choices={ROLES}/>
         </Datagrid>
     </List>
