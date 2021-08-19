@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+# Praxisruf Admin UI
+
+## Description
+
+This service is part of the Praxisruf system.
+The Admin UI directly connects to the REST API of the Praxisruf Cloud Service.
+It provides CRUD operations for all configuration items that are used in the system.
+
+More detailed information on the system can be found in the project report [Cloudbasiertes Praxisrufsystem](https://github.com/IP5-Cloudbasiertes-Praxisrufsystem/IP5-documentation/blob/main/out/cloudbasiertes_praxisrufsystem.pdf). 
+
+## Development Setup
+
+* Make sure the [Praxisruf Cloud Service](https://github.com/IP5-Cloudbasiertes-Praxisrufsystem/IP5-praxis-cloud-service) is up and running.
+* Define an environment variable "REACT_APP_BACKEND_BASE_URI". Use the address of the Praxisruf Cloud Service as its value. 
+* If starting for the first time run `npm install` in the project root directory
+* Run `npm start` in the project root directory
+
+## Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -15,7 +32,7 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### `npm test`
-
+d
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
