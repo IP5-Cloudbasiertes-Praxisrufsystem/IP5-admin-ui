@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {SelectField, List, Datagrid, TextField, Edit, SimpleForm, TextInput, PasswordInput, Create, AutocompleteInput} from 'react-admin';
-import {ROLES} from "../constants";
+import {BooleanInput, List, Datagrid, TextField, BooleanField, Edit, SimpleForm, TextInput, PasswordInput, Create, AutocompleteInput} from 'react-admin';
 
 export const NotificationTypeList = props => (
     <List {...props}>
@@ -9,6 +8,7 @@ export const NotificationTypeList = props => (
             <TextField source="title"/>
             <TextField source="body"/>
             <TextField source="description"/>
+            <BooleanField source="textToSpeech"/>
         </Datagrid>
     </List>
 );
@@ -20,6 +20,7 @@ export const NotificationTypeEdit = props => (
             <TextInput source="title"/>
             <TextInput multiline={true} source="body"/>
             <TextInput source="description"/>
+            <BooleanInput source="textToSpeech"/>
         </SimpleForm>
     </Edit>
 );
@@ -31,6 +32,7 @@ export const NotificationTypeCreate = props => (
             <TextInput source="title"/>
             <TextInput multiline={true} source="body"/>
             <TextInput source="description"/>
+            <BooleanInput source="textToSpeech"/>
         </SimpleForm>
     </Create>
 );
