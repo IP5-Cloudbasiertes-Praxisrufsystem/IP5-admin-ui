@@ -16,7 +16,7 @@ import {
 import {ROLES} from "../constants";
 
 export const ClientsList = props => (
-    <List {...props}>
+    <List {...props} sort={{field: "name", order: "DESC"}}>
         <Datagrid rowClick="edit">
             <TextField source="name"/>
             <ReferenceField source="userId" reference="users"><TextField source="userName"/></ReferenceField>

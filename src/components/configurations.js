@@ -23,7 +23,7 @@ import {
 import {RULE_TYPES} from "../constants";
 
 export const ConfigurationList = props => (
-    <List {...props}>
+    <List {...props} sort={{field: "name", order: "DESC"}}>
         <Datagrid rowClick="edit">
             <ReferenceField source="clientId" reference="clients"><TextField source="name"/></ReferenceField>
             <TextField source="name"/>

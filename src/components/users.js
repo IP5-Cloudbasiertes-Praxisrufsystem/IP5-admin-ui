@@ -3,7 +3,7 @@ import {SelectField, List, Datagrid, TextField, Edit, SimpleForm, TextInput, Pas
 import {ROLES} from "../constants";
 
 export const UserList = props => (
-    <List {...props}>
+    <List {...props} sort={{field: "userName", order: "DESC"}}>
         <Datagrid rowClick="edit">
             <TextField label="User Name" source="userName"/>
             <SelectField source="role" choices={ROLES}/>

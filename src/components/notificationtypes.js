@@ -2,7 +2,7 @@ import * as React from 'react';
 import {BooleanInput, List, Datagrid, TextField, BooleanField, Edit, SimpleForm, TextInput, PasswordInput, Create, AutocompleteInput} from 'react-admin';
 
 export const NotificationTypeList = props => (
-    <List {...props}>
+    <List {...props} sort={{field: "title", order: "DESC"}}>
         <Datagrid rowClick="edit">
             <TextField source="displayText"/>
             <TextField source="title"/>
