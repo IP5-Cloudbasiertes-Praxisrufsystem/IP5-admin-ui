@@ -46,6 +46,12 @@ export const ConfigurationList = props => (
                     <ChipField source="title"/>
                 </SingleFieldList>
             </ReferenceArrayField>
+
+            <ReferenceArrayField label="Call Types" source="callTypes" reference="calltypes">
+                <SingleFieldList>
+                    <ChipField source="displayText"/>
+                </SingleFieldList>
+            </ReferenceArrayField>
         </Datagrid>
     </List>
 );
@@ -94,6 +100,11 @@ export const ConfigurationEdit = props => (
                     <ReferenceInput reference="notificationtypes"><SelectInput optionText="title"/></ReferenceInput>
                 </SimpleFormIterator>
             </ArrayInput>
+            <ArrayInput source="callTypes">
+                <SimpleFormIterator>
+                    <ReferenceInput reference="calltypes"><SelectInput optionText="displayText"/></ReferenceInput>
+                </SimpleFormIterator>
+            </ArrayInput>
         </SimpleForm>
     </Edit>
 );
@@ -140,6 +151,11 @@ export const ConfigurationCreate = props => (
             <ArrayInput source="notificationTypes">
                 <SimpleFormIterator>
                     <ReferenceInput reference="notificationtypes"><SelectInput optionText="title"/></ReferenceInput>
+                </SimpleFormIterator>
+            </ArrayInput>
+            <ArrayInput source="callTypes">
+                <SimpleFormIterator>
+                    <ReferenceInput reference="calltypes"><SelectInput optionText="displayText"/></ReferenceInput>
                 </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>
