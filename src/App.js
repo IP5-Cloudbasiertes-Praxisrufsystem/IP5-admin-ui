@@ -18,7 +18,7 @@ function App() {
         <Resource name='notificationtypes' list={NotificationTypeList} edit={NotificationTypeEdit} create={NotificationTypeCreate} options={{ label: 'Notification Types' }}/>
         <Resource name='configurations' list={ConfigurationList} edit={ConfigurationEdit} create={ConfigurationCreate}/>
         <Resource name='callgroups' list={CallGroupList} edit={CallGroupEdit} create={CallGroupCreate}/>
-        <Resource name='callgroups' list={CallTypeList} edit={CallTypeEdit} create={CallTypeCreate}/>
+        <Resource name='calltypes' list={CallTypeList} edit={CallTypeEdit} create={CallTypeCreate}/>
       </Admin>
   );
 }
