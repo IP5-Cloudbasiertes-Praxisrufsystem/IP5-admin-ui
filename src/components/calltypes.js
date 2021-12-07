@@ -25,7 +25,11 @@ export const CallTypeList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="displayText"/>
-            <ReferenceField source="callGroup" reference="callgroups"><TextField source="name"/></ReferenceField>
+            <ReferenceArrayField source="participants" reference="clients">
+                <SingleFieldList>
+                    <ChipField source="name"/>
+                </SingleFieldList>
+            </ReferenceArrayField>
         </Datagrid>
     </List>
 );
@@ -34,7 +38,11 @@ export const CallTypeEdit = props => (
   <Edit {...props}>
       <SimpleForm>
           <TextInput source="displayText"/>
-          <ReferenceInput source="callGroup" reference="callgroups"><SelectInput optionText="name"/></ReferenceInput>
+          <ArrayInput source="participants">
+              <SimpleFormIterator>
+                  <ReferenceInput reference="clients"><SelectInput optionText="name"/></ReferenceInput>
+              </SimpleFormIterator>
+          </ArrayInput>
   </SimpleForm>
   </Edit>
 );
@@ -43,7 +51,11 @@ export const CallTypeCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <TextInput source="displayText"/>
-            <ReferenceInput source="callGroup" reference="callgroups"><SelectInput optionText="name"/></ReferenceInput>
+            <ArrayInput source="participants">
+                <SimpleFormIterator>
+                    <ReferenceInput reference="clients"><SelectInput optionText="name"/></ReferenceInput>
+                </SimpleFormIterator>
+            </ArrayInput>
         </SimpleForm>
     </Create>
 );

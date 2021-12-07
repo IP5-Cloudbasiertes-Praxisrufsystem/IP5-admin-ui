@@ -6,7 +6,6 @@ import {UserList, UserCreate, UserEdit} from "./components/users";
 import {ClientCreate, ClientEdit, ClientsList} from "./components/clients";
 import {NotificationTypeList, NotificationTypeEdit, NotificationTypeCreate} from "./components/notificationtypes";
 import {ConfigurationCreate, ConfigurationEdit, ConfigurationList} from "./components/configurations";
-import {CallGroupCreate, CallGroupEdit, CallGroupList} from "./components/callgroups"
 import {CallTypeCreate, CallTypeEdit, CallTypeList} from "./components/calltypes"
 
 
@@ -17,7 +16,6 @@ function App() {
         <Resource name='clients' list={ClientsList} edit={ClientEdit} create={ClientCreate}/>
         <Resource name='notificationtypes' list={NotificationTypeList} edit={NotificationTypeEdit} create={NotificationTypeCreate} options={{ label: 'Notification Types' }}/>
         <Resource name='configurations' list={ConfigurationList} edit={ConfigurationEdit} create={ConfigurationCreate}/>
-        <Resource name='callgroups' list={CallGroupList} edit={CallGroupEdit} create={CallGroupCreate}/>
         <Resource name='calltypes' list={CallTypeList} edit={CallTypeEdit} create={CallTypeCreate}/>
       </Admin>
   );
