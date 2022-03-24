@@ -33,6 +33,8 @@ You will also see any lint errors in the console.
 
 ### `npm run build`
 
+Make sure to set the environment variable REACT_APP_BACKEND_BASE_URI to the base url of the cloud service before running the build.  
+
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
